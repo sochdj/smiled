@@ -117,6 +117,7 @@
 	<script src="assets/public/js/vendor/sockjs-client/dist/sockjs-0.3.4.js"></script>
 	<script src="assets/public/js/vendor/ngDialog/js/ngDialog.js"></script>
 
+	<script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
 	
 	<!-- CUSTOM SCRIPT -->
 	<script src="assets/public/js/app.js"></script>
@@ -127,9 +128,10 @@
 	<script src="assets/public/js/controllers/dashboardController.js"></script>
 	<script src="assets/public/js/controllers/expandScenarioController.js"></script>
 	<script src="assets/public/js/controllers/indexController.js"></script>
+	<script src="assets/public/js/controllers/createScenarioController.js"></script>
 	<script src="assets/public/js/controllers/updateScenarioController.js"></script>
 	<script src="assets/public/js/controllers/personalProfileController.js"></script>
-	<script src="assets/public/js/controllers/dialogCreateScenarioController.js"></script>
+	<script src="assets/public/js/controllers/popoverDemoController.js"></script>
 	<script src="assets/public/js/services/userService.js"></script>
 	<script src="assets/public/js/services/apiService.js"></script>
 	<script src="assets/public/js/services/alertingLogin.js"></script>
@@ -146,7 +148,34 @@
 	<script src="assets/public/js/wrapping/stateChangeErrors.js"></script>
 	
 	
-
+<script>
+	var url = 'https://'+window.location.host+'/ThesisProject/websocket/marcopolo';
+	var sock = new SockJS(url);
+	
+	var stomp = Stomp.over(sock);
+	
+	var payload = JSON.stringify({ 'message': 'Marco!' });
+	stomp.connect('guest', 'guest', function(frame) {
+		stomp.send("/marco", {}, payload);
+	});
+	
+// 	sock.onopen = function() {
+	
+// 		console.log('Opening');
+// 		sayMarco();
+// 	};
+// 	sock.onmessage = function(e) {
+// 		console.log('Received message: ', e.data);
+// 		setTimeout(function(){sayMarco()}, 2000);
+// 	};
+// 	sock.onclose = function() {
+// 		console.log('Closing');
+// 	};
+// 	function sayMarco() {
+// 		console.log('Sending Marco!');
+// 		sock.send("Marco!");
+// 	}
+ </script>
 
 </body>
 </html>
