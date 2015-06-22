@@ -1,7 +1,26 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-2"></div>
-		<div class="col-sm-8"><h1>I miei alunni</h1></div>
-		
+		<div class="col-sm-8"><h1>I miei alunni</h1>		
+		<div class="row">
+			<div class="box">
+			<!-- Mettere il riferimento alle liste di studente -->
+			ZZZZ
+				<div data-ng-repeat="s in expand.user.students" data-ui-sref="scenario({id : '{{s.id}}' })">
+					<div class="col-sm-4"  data-ui-sref="scenario({id : '{{s.id}}' })">
+						<div class="row">
+							<div class="col-sm-6">
+								<!-- Mettere il riferimento alle immagini del profilo -->
+								<div class="roundedImgDiv" style="background-image:url('api/v1/users/{{s.id}}/cover')"></div>
+							</div>
+							<div class="col-sm-6 vAlignExt">
+								<div class="vAlignInt">{{s.firstName}} {{s.lastName}}</div>
+							</div>
+						</div>
+					</div>
+				</div>	
+			</div>
+		</div>
+		</div>
 	</div>
 </div>

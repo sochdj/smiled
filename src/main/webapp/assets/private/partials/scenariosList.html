@@ -36,17 +36,17 @@
 			</div>
 			<div class="box">		
 				<h2>Scenari attivi</h2>
-				<div data-ng-repeat="s in expand.user.openScenarios" data-ui-sref="scenario({id : '{{s.id}}' })">
-				<!-- Aggiungere la possibilità di andare a capo -->
-					<div class="row">
+				<div ng-if='expand.user.openScenarios==null'>Non sono presenti scenari attivi</div>
+				<div class="row">
+					<div data-ng-repeat="s in expand.user.openScenarios" data-ui-sref="scenario({id : '{{s.id}}' })">
 						<div class="col-sm-4"  data-ui-sref="scenario({id : '{{s.id}}' })">
 							<div class="row">
 								<div class="col-sm-6">
 									<div class="roundedImgDiv" style="background-image:url('api/v1/scenarios/{{s.id}}/cover')"></div>
 								</div>
-									<div class="col-sm-6 vAlignExt">
-										<div class="vAlignInt">{{s.name}} {{s.creationDate}}</div>
-									</div>
+								<div class="col-sm-6 vAlignExt">
+									<div class="vAlignInt">{{s.name}} {{s.creationDate}}</div>
+								</div>
 							</div>
 						</div>	
 					</div>

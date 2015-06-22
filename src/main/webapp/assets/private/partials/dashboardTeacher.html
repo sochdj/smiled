@@ -4,7 +4,7 @@
 	<div class="row-fluid">
 		<div class="col-lg-1"></div>
 		<div class="col-sm-12 col-lg-10">
-			<div class="row-fluid">
+			<div class="row">
 				<div
 					class="col-md-3 doubleRow box hidden-xs hidden-sm visible-md visible-lg">
 					<h3>Compiti</h3>
@@ -25,7 +25,7 @@
 							</h4>
 
 						</div>
-
+						<div ng-if='dashboard.user.openScenarios==null'>Non sono presenti scenari attivi</div>
 						<div data-ui-sref="scenario({id : '{{s.id}}' })" class="col-sm-2"
 							data-ng-repeat="s in dashboard.user.openScenarios">
 							<img data-ng-src="api/v1/scenarios/{{s.id}}/cover"
