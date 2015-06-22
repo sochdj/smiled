@@ -93,6 +93,8 @@ public class UserServiceImpl implements UserDetailsService, UserService{
 	public UserDTO getOneself(String userEmail) throws UserNotFoundException, MongoException {
 
 		try{
+			
+			System.out.println("try to find email of: "+ userEmail);
 			User u = userRepository.findByEmail(userEmail);
 			if(u==null)
 				throw new UserNotFoundException();

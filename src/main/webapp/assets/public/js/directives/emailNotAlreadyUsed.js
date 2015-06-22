@@ -3,18 +3,19 @@ angular.module("smiled.application").directive('emailnotalreadyused', ['$http', 
 	//validator asincrono
 	
 	
-		var processResponse = function(response){
-			if(response.data){
-				return $q.when(true);
-			}
-			else{
+		var processResponseSuccess = function(response){
 				return $q.reject(false);
-			}
+			
 		};
+		
+		var processResonseError = function(reason){
+			console.log(reason);
+			return $q.when(true);
+		}
 	
 		var validateUsername = function(value){
-			return $http.get("api/v1/users/email=" + encodeURI(value))
-				.then(processResponse);
+			return $http.get("api/v1/users/email?email=" + encodeURI(value))
+				.then(processResponseSuccess, processResonseError);
 			
 		};
 	

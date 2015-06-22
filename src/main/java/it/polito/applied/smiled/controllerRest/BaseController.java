@@ -37,11 +37,11 @@ public abstract class BaseController {
 	}
 	
 	@ExceptionHandler(UserNotFoundException.class)
-	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
+	@ResponseStatus(value = HttpStatus.NOT_FOUND)
 	public ErrorInfo handleUserNotFoundException(UserNotFoundException e){
 		ErrorInfo error = new ErrorInfo();
 		error.setMessage(e.getMessage());
-		error.setStatusCode("400");
+		error.setStatusCode("404");
 		/*DA INSERIRE URL*/
 		return error;
 	}
